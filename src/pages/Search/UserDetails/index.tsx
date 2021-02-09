@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../../../core/components/Button';
 import { UserResponse } from '../../../core/types/User';
+import { formatDate } from '../../../core/utils/dates';
 import './styles.scss';
 
 type Props = {
@@ -15,7 +16,6 @@ const UserDetails = ({user}: Props) => {
     return (
         <>
             <div className={`search-content-user ${user.login !== '' ? 'active' : ''}`}>
-
                 <img src={user.avatar_url} alt="" className="search-content-image"/>
                 <div className="search-content-actions">
                     <Button text="Ver Perfil" handleOnClick={handleOnClick}/>
@@ -45,7 +45,7 @@ const UserDetails = ({user}: Props) => {
                         <strong>Localidade: </strong> {user.location} 
                     </div>
                     <div className="info principal br-4">
-                        <strong>Membro desde: </strong> {user.created_at} 
+                        <strong>Membro desde: </strong> {formatDate({date: user.created_at})} 
                     </div>
                 </div>
             </div>
